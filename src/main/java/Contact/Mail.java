@@ -8,7 +8,6 @@ public class Mail {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long Id;
-    private String Libelle;
     private String adresseMail;
 
     @ManyToOne
@@ -16,8 +15,7 @@ public class Mail {
     private Contact contact;
 
     protected Mail(){}
-    public Mail(String Libelle, String adresseMail, Contact contact){
-        this.Libelle=Libelle;
+    public Mail(String adresseMail, Contact contact){
         this.adresseMail=adresseMail;
         this.contact=contact;
     }
@@ -28,14 +26,6 @@ public class Mail {
 
     public void setId(Long id) {
         Id = id;
-    }
-
-    public String getLibelle() {
-        return Libelle;
-    }
-
-    public void setLibelle(String libelle) {
-        Libelle = libelle;
     }
 
     public String getAdresseMail() {
