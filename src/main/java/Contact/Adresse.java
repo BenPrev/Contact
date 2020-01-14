@@ -13,8 +13,7 @@ public class Adresse {
     private int NDeRue;
     private int CP;
     private String ville;
-    @ManyToMany(mappedBy = "lieuHabitation")
-    private Collection<Contact> contacts;
+
 
     protected Adresse(){}
 
@@ -65,11 +64,5 @@ public class Adresse {
         this.ville = ville;
     }
 
-    public Collection<Contact> getContacts() {
-        return contacts;
-    }
 
-    public void setContacts(Collection<Contact> contacts) {
-        this.contacts = contacts;
-    }
 }

@@ -15,15 +15,14 @@ public class Contact {
     @JoinTable(name="lieuHabitations")
     private Collection<Adresse> lieuHabitation;
 
-    @OneToMany(mappedBy = "contact")
-    private Collection<Mail> mail;
 
 
     public Contact(){};
 
-    public Contact(String firstname, String lastname){
+    public Contact(String firstname, String lastname, Collection<Adresse> lieuHabitation){
         this.firstname=firstname;
         this.lastname=lastname;
+        this.lieuHabitation = lieuHabitation;
     }
 
     public Long getId() {
@@ -58,11 +57,5 @@ public class Contact {
         this.lieuHabitation = lieuHabitation;
     }
 
-    public Collection<Mail> getMail() {
-        return mail;
-    }
 
-    public void setMail(Collection<Mail> mail) {
-        this.mail = mail;
-    }
 }

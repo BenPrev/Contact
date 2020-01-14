@@ -17,7 +17,7 @@ public class Mail {
     protected Mail(){}
     public Mail(String adresseMail, Contact contact){
         this.adresseMail=adresseMail;
-        this.contact=contact;
+        this.contact = contact;
     }
 
     public Long getId() {
