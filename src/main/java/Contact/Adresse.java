@@ -64,5 +64,9 @@ public class Adresse {
         this.ville = ville;
     }
 
+    @Override
+    public String toString(){
+        return "" + this.NDeRue + " " + this.rue +", "+ this.ville + " " + this.CP;
+    }
 
 }

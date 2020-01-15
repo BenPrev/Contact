@@ -15,6 +15,9 @@ public class WebController{
     @Autowired
     ContactRepository contactRepository;
 
+    @Autowired
+    MailRepository  mailRepository;
+
     @GetMapping("/")
     public String index(){
         return ("index");
@@ -24,4 +27,10 @@ public class WebController{
     public Iterable<Contact> afficherContacts(){
         return contactRepository.findAll();
     }
+
+    @ModelAttribute("mails")
+    public Iterable<Mail> afficherMailsContact(){
+        return mailRepository.findAll();
+    }
+
 }

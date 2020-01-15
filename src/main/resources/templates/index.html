@@ -36,9 +36,16 @@
     </div>
 </form>
 <table>
-<tr th:each="e: ${contacts}">
-    <td th:text="${e.firstname}"/><br/>
-</tr>
+    <tr><td>Prénom</td><td>Nom</td><td>Adresse postale</td><td>Mail</td></tr>
+    <tr th:each="e: ${contacts}">
+        <td th:text="${e.firstname}"/><br/>
+        <td th:text="${e.lastname}"/><br/>
+        <td th:text="${e.lieuHabitation}"/><br/>
+        <td th:each="f:${mails}" th:if="${f.contact.id==e.id}" th:text="${f.adresseMail}" /><br/>
+
+
+
+    </tr>
 </table>
 </body>
 </html>
