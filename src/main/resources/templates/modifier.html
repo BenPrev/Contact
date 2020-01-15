@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Modifier un contact</title>
+</head>
+<body>
+<form action ="/finmodif" method="post">
+
+        <input type ="hidden" id="id" name="id" th:value="${contact.get().id}">
+
+    <div>
+        <label for ="lastname">Nom :</label>
+        <input type ="text" id="lastname" name="lastname" th:value="${contact.get().lastname}">
+    </div>
+    <div>
+        <label for ="firstname">Prenom :</label>
+        <input type ="text" id="firstname" name="firstname" th:value="${contact.get().firstname}">
+    </div>
+    <div>
+        <select id="contactAdresses" name="contactAdresses" multiple>
+            <option th:each="a:${contact.get().lieuHabitation}" th:value="${a.id}" th:label="${a.toString()}"></option>
+        </select>
+    </div>
+    <div >
+        <select id="contactMail" name="contactMail" multiple>
+            <option th:each="f:${mails}" th:if="${f.contact.id==contact.get().id}" th:value="${f.id}" th:label="${f.adresseMail}"></option>
+        </select>
+    </div>
+    <input type="submit" label="Valider"/>
+</form>
+</body>
+</html>

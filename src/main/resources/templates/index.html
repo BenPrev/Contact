@@ -6,6 +6,8 @@
 </head>
 <body>
 <form action=« /Nouveau-contact » method=« post »>
+    <input type ="hidden" id="id" name="id">
+
     <div>
         <label for ="lastname">Nom :</label>
         <input type ="text" id="lastname" name="lastname">
@@ -34,18 +36,37 @@
         <label for= " adresseMail "> Mail: </label>
         <input type ="adresseMail" id="adresseMail" name="adresseMail">
     </div>
+    <input type ="submit" value="sauvegarder">
 </form>
 <table>
     <tr><td>Prénom</td><td>Nom</td><td>Adresse postale</td><td>Mail</td></tr>
-    <tr th:each="e: ${contacts}">
-        <td th:text="${e.firstname}"/><br/>
-        <td th:text="${e.lastname}"/><br/>
-        <td th:text="${e.lieuHabitation}"/><br/>
-        <td th:each="f:${mails}" th:if="${f.contact.id==e.id}" th:text="${f.adresseMail}" /><br/>
 
-
-
-    </tr>
+        <tr th:each="e: ${contacts}">
+                <td th:text="${e.firstname}"/><br/>
+                <td th:text="${e.lastname}"/><br/>
+                <td th:text="${e.lieuHabitation}"/><br/>
+                <td th:each="f:${mails}" th:if="${f.contact.id==e.id}" th:text="${f.adresseMail}" /><br/>
+        </tr>
 </table>
+<form action="/modifier" method="post">
+<p>Modifier un contact : </p>
+<label>
+    <select name="id">
+    <option th:each="e: ${contacts}" th:value="${e.id}" th:label="${e.lastname}+' '+${e.firstname}"></option>
+    </select>
+</label>
+    <input id='modifier' type="submit" value="modifier"/>
+</form>
+
+<form>
+    <p>Supprimer un contact : </p>
+    <label>
+        <select name="id">
+            <option th:each="e: ${contacts}" th:value="${e.id}" th:label="${e.lastname}+' '+${e.firstname}"></option>
+        </select>
+    </label>
+    <input id='supprimer' type="button" value="supprimer"/>
+</form>
+
 </body>
 </html>
