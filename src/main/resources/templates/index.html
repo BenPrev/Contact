@@ -5,9 +5,8 @@
     <title>Contact</title>
 </head>
 <body>
-<form action=« /Nouveau-contact » method=« post »>
+<form action="/creerContact" method="post">
     <input type ="hidden" id="id" name="id">
-
     <div>
         <label for ="lastname">Nom :</label>
         <input type ="text" id="lastname" name="lastname">
@@ -58,7 +57,8 @@
     <input id='modifier' type="submit" value="modifier"/>
 </form>
 
-<form>
+<form action="/deleteContact" method="post">
+
     <p>Supprimer un contact : </p>
     <label>
         <select name="id">

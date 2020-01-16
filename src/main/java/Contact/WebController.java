@@ -67,6 +67,24 @@ public class WebController{
         }
         return ("redirect:/");
     }
+    @PostMapping("/creerContact")
+    public String creerContact(@RequestParam(name="lastname") String lastname, @RequestParam(name = "firstname") String firstname, @RequestParam(name = "NDeRue")int NDeRue, @RequestParam(name = "Rue" ) String rue,@RequestParam(name="Ville")String Ville, @RequestParam(name="CP") int CP,@RequestParam(name="adresseMail") String mail){
+        Adresse adresse = new Adresse(rue,NDeRue,CP,Ville);
+        adresseRepository.save(adresse);
+        Collection<Adresse> adds = new ArrayList<Adresse>();
+        adds.add(adresse);
+        Contact contact = new Contact(firstname,lastname,adds);
+        contactRepository.save(contact);
+        Mail mail1 = new Mail(mail, contact);
+        mailRepository.save(mail1);
+
+        return ("index");
+    }
+
+    @PostMapping("/deleteContact")
+    public String deleteContact(){
+        return ("index");
+    }
 
 
     @ModelAttribute("contacts")
