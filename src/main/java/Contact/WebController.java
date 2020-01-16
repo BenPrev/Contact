@@ -82,8 +82,12 @@ public class WebController{
     }
 
     @PostMapping("/deleteContact")
-    public String deleteContact(){
-        return ("index");
+    public String deleteContact(@RequestParam(name = "id") Long id){
+        Contact c = contactRepository.findById(id).get();
+        for (Mail m : mailRepository.findByContact(c))
+            mailRepository.delete(m);
+        contactRepository.delete(c);
+        return ("redirect:/");
     }
 
 
