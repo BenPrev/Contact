@@ -1,30 +1,34 @@
-buildscript {
-    repositories {
-        mavenCentral()
-    }
-    dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.1.3.RELEASE")
-    }
-}
-apply plugin: 'java'
-apply plugin: 'eclipse'
-apply plugin: 'idea'
-apply plugin: 'org.springframework.boot'
 
-jar {
-    baseName = 'SpringExamples'
-    version = '0.1.0'
+plugins {
+    id 'org.springframework.boot' version '2.2.2.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+    id 'java'
+    id 'eclipse'
+    id 'idea'
 }
+
+group='contact'
+version='0.1.0'
+
 repositories {
     mavenCentral()
 }
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 dependencies {
-    compile("org.springframework.boot:spring-boot-starter-thymeleaf:2.1.3.RELEASE")
-    compile("org.springframework.boot:spring-boot-starter-web:2.1.3.RELEASE")
-    compile("org.springframework.boot:spring-boot-devtools:2.1.3.RELEASE")
-    compile("org.springframework.boot:spring-boot-starter-data-jpa:2.1.3.RELEASE")
-    compile("com.h2database:h2:1.4.197")
-    testCompile("junit:junit:4.12")
+    def springBootVersion='2.2.2.RELEASE'
+    implementation(group:"org.springframework.boot", name:"spring-boot-starter-thymeleaf", version:springBootVersion)
+    implementation(group:"org.springframework.boot", name:"spring-boot-starter-web", version:springBootVersion)
+    implementation(group:"org.springframework.boot", name:"spring-boot-devtools", version:springBootVersion)
+    implementation(group:"org.springframework.boot", name:"spring-boot-starter-data-jpa", version:springBootVersion)
+    implementation(group:"org.springframework.boot", name:"spring-boot-starter-security", version:springBootVersion)
+    implementation(group:"com.h2database", name:"h2", version:"1.4.200")
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+    implementation 'org.springframework.security:spring-security-test'
+}
+
+test {
+    useJUnitPlatform()
 }

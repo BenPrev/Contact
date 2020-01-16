@@ -6,8 +6,10 @@
 </head>
 <body>
 <form action ="/finmodif" method="post">
-
-        <input type ="hidden" id="id" name="id" th:value="${contact.get().id}">
+    <input type="hidden"
+           th:name="${_csrf.parameterName}"
+           th:value="${_csrf.token}"/>
+    <input type ="hidden" id="id" name="id" th:value="${contact.get().id}">
 
     <div>
         <label for ="lastname">Nom :</label>

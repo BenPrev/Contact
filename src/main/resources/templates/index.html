@@ -2,10 +2,13 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Contact</title>
+    <title>contact</title>
 </head>
 <body>
 <form action="/creerContact" method="post">
+    <input type="hidden"
+           th:name="${_csrf.parameterName}"
+           th:value="${_csrf.token}"/>
     <input type ="hidden" id="id" name="id">
     <div>
         <label for ="lastname">Nom :</label>
@@ -48,7 +51,10 @@
         </tr>
 </table>
 <form action="/modifier" method="post">
-<p>Modifier un contact : </p>
+    <input type="hidden"
+           th:name="${_csrf.parameterName}"
+           th:value="${_csrf.token}"/>
+    <p>Modifier un contact : </p>
 <label>
     <select name="id">
     <option th:each="e: ${contacts}" th:value="${e.id}" th:label="${e.lastname}+' '+${e.firstname}"></option>
@@ -58,7 +64,9 @@
 </form>
 
 <form action="/deleteContact" method="post">
-
+    <input type="hidden"
+           th:name="${_csrf.parameterName}"
+           th:value="${_csrf.token}"/>
     <p>Supprimer un contact : </p>
     <label>
         <select name="id">
