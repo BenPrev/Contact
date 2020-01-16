@@ -107,4 +107,11 @@ public class WebController {
         return mailRepository.findAll();
     }
 
+
+
+    @GetMapping("/xml")
+    public String xml(@RequestParam(name="action")String action, @RequestParam(name="id") Long id){
+        return("xmlf file");
+    }
+
 }
